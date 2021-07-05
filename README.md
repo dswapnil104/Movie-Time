@@ -2,7 +2,8 @@
 
 Movie Time is a responsive movie booking website written in Python and Javascript.
 ___
-### Login/Register Page:
+
+## Login/Register Page:
 - Page for logging in.
 ![image](https://github.com/AakashSehrawat95/MovieTime/blob/master/documents/1.jpg)
 
@@ -10,13 +11,15 @@ ___
 - The **city select** input field options are generated from exsting cities inside the database.
 ![image](https://github.com/AakashSehrawat95/MovieTime/blob/master/documents/2.jpg)
 
-### Index Page:
+## Index Page:
+
 - Home page of the applicaton. 
 - Top of the page has navbar which is available across the pages once logged in. 
 - Bottom of the page has a section which displays 3 random movies from the database.
 ![image](https://github.com/AakashSehrawat95/MovieTime/blob/master/documents/3.jpg)
 
-### Movies Page:
+## Movies Page:
+
 - Lists all the movie posters in the database in a Masonry Layout.
 - Same page acts as a search results page for the search bar in the navbar above.
 ![image](https://github.com/AakashSehrawat95/MovieTime/blob/master/documents/4.jpg)
