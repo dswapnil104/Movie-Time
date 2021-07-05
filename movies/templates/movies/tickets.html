@@ -1,0 +1,286 @@
+{% extends 'movies/layout.html' %}
+
+{% block body %}
+
+    <h2 style="color: white;margin-top: 90px;margin-left: auto;margin-right: auto; width: 70%;">Upcoming Bookings</h2>
+
+    {% if Tickets %}
+
+        {% for ticket in Tickets %}
+
+            {% if ticket.show.is_days_ahead %}
+
+            <div class="d-wrapper">
+                <div class="zig-zag-bottom">
+                </div>
+
+                <div class="sep">
+                    <div class="movieTicket">
+                        <div class="ticketMovieImage">
+                            <a href = "{% url 'moviePage' movieName=ticket.show.movie.name %}"><img src="{{ ticket.show.movie.poster }}"></a>
+                        </div>
+
+                        <div class="ticketMovieDetails">
+                            <div class="ticketMovieName">
+                                <h2>{{ ticket.show.movie.name }} {{ticket.show.hall.hall_type}}</h2>
+                            </div>
+                            <div class="ticketMovieInfo">
+                                <div class="left">
+                                    <ul>
+                                        <li><span class="bold">Customer:</span> {{ ticket.user.username }}</li>
+                                        <li><span class="bold">Seat(s):</span> {% for key, seatList in ticket.seat.items %}
+                                                        {% for seat in seatList %}
+                                                            {% if forloop.last %}
+                                                                {{ seat }}
+                                                            {% else %}
+                                                                {{ seat }},
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                        </li>
+                                        <li><span class="bold">Total Cost:</span> {{ ticket.cost }} Rs/-</li>
+                                        <li><span class="bold">Hall:</span> {{ ticket.show.hall.name }}</li>
+                                        <li><span class="bold">Theatre:</span> {{ ticket.show.hall.theatre.name }}</li>
+                                        <li><span class="bold">City:</span> {{ ticket.show.hall.theatre.city.name }}</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="right">
+                                    <ul>
+                                        <li><span class="bold">Time:</span> {{ ticket.show.get_time_display }}</li>
+                                        <li><span class="bold">Date:</span> {{ ticket.show.date }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <ul>
+    
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="zig-zag-top">
+                </div>
+
+            </div> 
+
+            {% elif ticket.show.time > current_time and ticket.show.is_same_day %}
+
+                <div class="d-wrapper">
+                    <div class="zig-zag-bottom">
+                    </div>
+
+                    <div class="sep">
+                        <div class="movieTicket">
+                            <div class="ticketMovieImage">
+                                <a href = "{% url 'moviePage' movieName=ticket.show.movie.name %}"><img src="{{ ticket.show.movie.poster }}"></a>
+                            </div>
+
+                            <div class="ticketMovieDetails">
+                                <div class="ticketMovieName">
+                                    <h2>{{ ticket.show.movie.name }} {{ticket.show.hall.hall_type}}</h2>
+                                </div>
+                                <div class="ticketMovieInfo">
+                                    <div class="left">
+                                        <ul>
+                                            <li><span class="bold">Customer:</span> {{ ticket.user.username }}</li>
+                                            <li><span class="bold">Seat(s):</span> {% for key, seatList in ticket.seat.items %}
+                                                            {% for seat in seatList %}
+                                                                {% if forloop.last %}
+                                                                    {{ seat }}
+                                                                {% else %}
+                                                                    {{ seat }},
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endfor %}
+                                            </li>
+                                            <li><span class="bold">Total Cost:</span> {{ ticket.cost }} Rs/-</li>
+                                            <li><span class="bold">Hall:</span> {{ ticket.show.hall.name }}</li>
+                                            <li><span class="bold">Theatre:</span> {{ ticket.show.hall.theatre.name }}</li>
+                                            <li><span class="bold">City:</span> {{ ticket.show.hall.theatre.city.name }}</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="right">
+                                        <ul>
+                                            <li><span class="bold">Time:</span> {{ ticket.show.get_time_display }}</li>
+                                            <li><span class="bold">Date:</span> {{ ticket.show.date }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul>
+        
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="zig-zag-top">
+                    </div>
+
+                </div> 
+
+            {% else %}
+
+
+            {% endif %}
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="d-wrapper">
+            <div class="zig-zag-bottom">
+            </div>
+        
+            <div class="sep">
+                <h2>No tickets yet...</h2>
+            </div>
+
+            <div class="zig-zag-top">
+            </div>
+        </div>
+
+    {% endif %}
+
+    <hr style="width: 70%;margin-top: 45px;">
+
+    <h2 style="color: white;margin-left: auto;margin-top: 45px;margin-right: auto; width: 70%;">Previous Bookings</h2>
+
+
+    {% if Tickets %}
+
+        {% for ticket in Tickets %}
+
+            {% if ticket.show.is_past_due %}
+
+                <div class="d-wrapper">
+                    <div class="zig-zag-bottom">
+                    </div>
+
+                    <div class="sep">
+                        <div class="movieTicket">
+                            <div class="ticketMovieImage">
+                                <<a href = "{% url 'moviePage' movieName=ticket.show.movie.name %}"><img src="{{ ticket.show.movie.poster }}"></a>
+                            </div>
+
+                            <div class="ticketMovieDetails">
+                                <div class="ticketMovieName">
+                                    <h2>{{ ticket.show.movie.name }} {{ticket.show.hall.hall_type}}</h2>
+                                </div>
+                                <div class="ticketMovieInfo">
+                                    <div class="left">
+                                        <ul>
+                                            <li><span class="bold">Customer:</span> {{ ticket.user.username }}</li>
+                                            <li><span class="bold">Seat(s):</span> {% for key, seatList in ticket.seat.items %}
+                                                            {% for seat in seatList %}
+                                                                {% if forloop.last %}
+                                                                    {{ seat }}
+                                                                {% else %}
+                                                                    {{ seat }},
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endfor %}
+                                            </li>
+                                            <li><span class="bold">Total Cost:</span> {{ ticket.cost }} Rs/-</li>
+                                            <li><span class="bold">Hall:</span> {{ ticket.show.hall.name }}</li>
+                                            <li><span class="bold">Theatre:</span> {{ ticket.show.hall.theatre.name }}</li>
+                                            <li><span class="bold">City:</span> {{ ticket.show.hall.theatre.city.name }}</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="right">
+                                        <ul>
+                                            <li><span class="bold">Time:</span> {{ ticket.show.get_time_display }}</li>
+                                            <li><span class="bold">Date:</span> {{ ticket.show.date }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul>
+        
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="zig-zag-top">
+                    </div>
+
+                </div> 
+
+
+            {% elif ticket.show.time < current_time and ticket.show.is_same_day %}
+            
+            <div class="d-wrapper">
+                <div class="zig-zag-bottom">
+                </div>
+
+                <div class="sep">
+                    <div class="movieTicket">
+                        <div class="ticketMovieImage">
+                            <a href = "{% url 'moviePage' movieName=ticket.show.movie.name %}"><img src="{{ ticket.show.movie.poster }}"></a>
+                        </div>
+
+                        <div class="ticketMovieDetails">
+                            <div class="ticketMovieName">
+                                <h2>{{ ticket.show.movie.name }} {{ticket.show.hall.hall_type}}</h2>
+                            </div>
+                            <div class="ticketMovieInfo">
+                                <div class="left">
+                                    <ul>
+                                        <li><span class="bold">Customer:</span> {{ ticket.user.username }}</li>
+                                        <li><span class="bold">Seat(s):</span> {% for key, seatList in ticket.seat.items %}
+                                                        {% for seat in seatList %}
+                                                            {% if forloop.last %}
+                                                                {{ seat }}
+                                                            {% else %}
+                                                                {{ seat }},
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                        </li>
+                                        <li><span class="bold">Total Cost:</span> {{ ticket.cost }} Rs/-</li>
+                                        <li><span class="bold">Hall:</span> {{ ticket.show.hall.name }}</li>
+                                        <li><span class="bold">Theatre:</span> {{ ticket.show.hall.theatre.name }}</li>
+                                        <li><span class="bold">City:</span> {{ ticket.show.hall.theatre.city.name }}</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="right">
+                                    <ul>
+                                        <li><span class="bold">Time:</span> {{ ticket.show.get_time_display }}</li>
+                                        <li><span class="bold">Date:</span> {{ ticket.show.date }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <ul>
+    
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="zig-zag-top">
+                </div>
+
+            </div> 
+
+            {% else %}
+
+
+            {% endif %}
+
+        {% endfor %}
+
+    {% else %}
+    <div class="d-wrapper">
+        <div class="zig-zag-bottom">
+        </div>
+    
+        <div class="sep">
+            <h2>No tickets yet...</h2>
+        </div>
+
+        <div class="zig-zag-top">
+        </div>
+    </div>
+
+    {% endif %}
+
+{% endblock %}

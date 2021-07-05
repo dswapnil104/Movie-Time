@@ -1,0 +1,11 @@
+{% extends 'movies/layout.html' %}
+
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <h1 class="{{ message.tags }}">{{ message }}</h1>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

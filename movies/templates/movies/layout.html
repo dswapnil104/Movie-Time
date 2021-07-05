@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'movies/index.css' %}" />
+    <script src="https://kit.fontawesome.com/27937cec1e.js" crossorigin="anonymous"></script>
+    <script src="{% static 'movies/navbar.js' %}"></script>
+    {% block head %}
+    {% endblock %}
+
+</head>
+    <body>                           
+
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+            <a href="{% url 'login' %}" class="logo">Movie Time</a>
+
+            <form class="searchBox" action="{% url 'search' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="q" class="searchText" placeholder="Search Movies" autocomplete="off" required/>
+                <a class="searchButton" type="submit">
+                    <i class="fas fa-search"></i>
+                </a>
+            </form>
+
+            <div class="main-nav" id="js-menu">
+                <a href="{% url 'index' %}" class="nav-links">Home</a>
+                <a href="{% url 'results' query='all' %}" class="nav-links">Movies</a>
+                <a href="{% url 'allTickets' %}" class="nav-links">Bookings</a>
+                <a href="{% url 'logout' %}" class="nav-links">Logout</a>
+            </div>
+
+            
+            <div class="user">
+                <li>Welcome, {{ request.user }}</li>
+            </div>
+        </nav>
+
+
+            {% block body %}
+            {% endblock %}
+
+    </body>
+</html>

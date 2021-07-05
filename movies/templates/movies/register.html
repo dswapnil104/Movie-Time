@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'movies/index.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="hero-bkg-animated">
+    </div>
+
+    <div class="loginBox">
+        <a href="{% url 'login' %}"> <img src="{% static 'movies/logo.png' %}" style="width: 460px; margin-bottom: 30px; margin-top: 30px;"></a>
+
+    <div class="rightForm">
+        <h2>Register</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div id="message" style="color: white; z-index: 2; position: relative;">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <div class="inputBox">
+                <input type="text" name="username" autocomplete="off" required>
+                <label>Username</label>
+            </div>
+
+            <div class="inputBox">
+                <input type="email" name="email" autocomplete="off" required>
+                <label>Email</label>
+            </div>
+
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+
+            <div class="inputBox">
+                <input type="password" name="confirmation" required>
+                <label>Confirm Password</label>
+            </div>
+
+            <div class="inputBox">
+                <select name="city" id="citySelect">
+                    <option value="" selected disabled>Select a City</option>
+                    {% for city in cities %}
+                        <option value="{{city.name}}">{{ city.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <input type="submit" name="" value="Submit">
+        </form>
+
+    </div>
+    </div>
+</body>
+</html>

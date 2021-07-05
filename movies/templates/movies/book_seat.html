@@ -1,0 +1,186 @@
+{% extends 'movies/layout.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}" />
+    <script src="{% static 'movies/script.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div id="mainBody">
+
+    <h2 id="movieName" style="margin-left: 10px;">{{ movie.name }}</h2>
+
+    <div id="hallForm">
+
+        <div class="hallInfo">
+        <label class="movieSearchLabel" for="cities">Select City:</label>
+            <select name="cities" id="cities" class="changeIsGood">
+                    <option value="any">---Any---</option>
+                    <option value="{{ current_city }}" selected>{{ current_city }}</option>
+                {% for city in cities %}
+                    <option value="{{city.name}}">{{ city.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="hallInfo">
+            <label class="movieSearchLabel" for="daySelect">Select Date:</label>
+            <select id="daySelect" class="changeIsGood">
+                    <option value="{{ today }}" selected>{{ today }}</option>
+                {% for day in dayList %}
+                    <option value="{{ day }}">{{ day }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="hallInfo">
+        <label class="movieSearchLabel" for="daySelect">Select Hall Type:</label>
+            <select id="hallSelect" class="changeIsGood">
+                <option value="any" selected>---Any---</option>
+                <option value="2D">2D</option>
+                <option value="3D">3D</option>
+                <option value="IMAX">IMAX</option>
+                <option value="4DX">4DX</option>
+            </select>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div id = "listOfHalls" style="height: inherit; overflow-y: scroll;">
+        <table id=showList>
+            <tr>
+                <th>Theater Name</td>
+                <th>Ticket Cost</th>
+                <th>Hall Type</td>
+                <th>Time</td>
+                <th>Date</td>
+            </tr>
+
+            {% for show in shows %}
+                <tr class="showData">
+                    <td>{{ show.hall.theatre.name }}</td>
+                    <td>{{ show.rate }} Rs/-</td>
+                    <td>{{ show.hall.hall_type }}</td>
+                    <td><a href="#" class="book">{{ show.get_time_display }}</a></td>
+                    <td>{{ show.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="simpleModal" class="modal">
+
+        <div class="modalContent">
+
+            <div id = "modalInner">
+                <ul class="showcase">
+
+                    <li>
+                    <div class="seat"></div>
+                    <small>N/A</small>
+                    </li>
+
+                    <li>
+                    <div class="seat selected"></div>
+                    <small>Selected</small>
+                    </li>
+
+                    <li>
+                    <div class="seat occupied"></div>
+                    <small>Occupied</small>
+                    </li>
+
+                </ul>
+            
+                <div class="container">
+                    <div class="screen"></div>
+            
+                    <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    </div>
+            
+                    <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    </div>
+            
+                    <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat occupied"></div>
+                    </div>
+            
+                    <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    </div>
+            
+                    <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    </div>
+            
+                    <div class="row">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat occupied"></div>
+                    <div class="seat"></div>
+                    </div>
+
+                </div>
+
+                <form id="bookTicketDiv" action="{% url 'allTickets' %}">
+                    <button form="bookTicketDiv" type="submit" id = "processRequest" disabled> Book Seats </button>
+                </form>
+
+            </div>
+
+            <div class="seatPrice">
+                <li id="total_seats">Seats Selected: 0</li>
+                <li id="total_cost">Total Cost: 0</li>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
