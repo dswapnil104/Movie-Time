@@ -1,0 +1,35 @@
+{% extends 'movies/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+    <section>
+        <div class="welcomeText">
+            <h1>Welcome to Movie Time</h1>
+            <li>Search for Movies</li>
+            <li>Select Seats</li>
+            <li>Generate Ticket</li>
+            <li>Enjoy!</li>
+        </div>
+
+        <div class="wave">
+        </div>
+    </section>
+
+    <hr style="border-color: rgb(58, 58, 58);margin-top: 120px;">
+    <h1 style="text-align: center;color: rgb(255, 255, 255); margin-top: 30px;">Check Out These Movies</h1>
+
+   
+    <div class="boxContainer">
+        {%for movie in random_movies %}
+            <div class="box">
+                <div class="glass"></div>
+                <div class="contentInside">
+                    <a href="{% url 'moviePage' movieName=movie.name %}"><img src="{{ movie.poster }}" style="width: 100%;"></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'movies/layout.html' %}
+
+
+{% block body %}
+
+    <div id="posterBox">
+        <div id="posterInnerBox">
+            <div class="topInfoLeft">
+                <div class="movieBanner"></div>
+            </div>
+
+            <div class="topInfoRight">
+                <h1> {{ movie.name }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="movieContainer">
+        <div class="movieInfoLeft">
+            <div class="movieBanner">
+                <img src="{{ movie.poster }}">
+            </div>
+        </div>
+
+        <div class="movieInfoRight">
+            <h2>Synopsis</h2>
+            <p>{{ movie.about }}</p>
+
+            <form id="bookTicketPage" action="{% url 'book_seat' movieName=movie %}" method="GET">
+                <button type="submit" form="bookTicketPage" id="selectHall">Book Seats</button>
+            </form>
+
+        </div>
+        
+{% endblock %}

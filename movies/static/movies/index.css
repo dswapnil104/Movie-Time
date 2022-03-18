@@ -1,0 +1,1075 @@
+body {
+    background: #000000;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+/* Add a black background color to the top navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    font-size: 18px;
+    background-image: linear-gradient(260deg, #680bd3 0%, #ff1515 100%);
+    border: 1px solid rgba(0, 0, 0, 0.801);
+    padding-bottom: 10px;
+    z-index: 20;
+    width: 100%;
+}
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+}
+
+.nav-links,
+.logo {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-links{
+    padding: 25.5px 10px;
+    width: 90px;
+    text-align: center;
+}
+
+.nav-links:hover {
+    background: rgba(255, 255, 255, 0.288);
+    transition-duration: 0.3s;
+}
+
+.logo {
+    display: inline-block;
+    font-size: 22px;
+    font-family: Impact, Charcoal, sans-serif;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+}
+
+.active {
+    display: block;
+    text-align: center;
+    transition-duration: 2s;
+}
+
+.active a {
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 0px;
+
+}
+
+.active a:first-child{
+    margin-top: 60px;
+}
+
+.searchBox {
+    display: none;
+    position: absolute;
+    left:  50%;
+    transform: translate(-50%);
+    top: 1%;
+    width: fit-content;
+    background: #2f3640;
+    height: 30px;
+    border-radius: 30px;
+    padding: 4px;
+}
+
+.responsive {
+    display: block;
+    top: 50px;
+}
+
+.searchBox:hover > .searchText {
+    width: 60vw;
+    padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+    background: white;
+    color: black;
+}
+
+.searchButton {
+    color: #7c0800;
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    color: rgb(136, 136, 136);
+    cursor: pointer;
+}
+
+.searchButton > i {
+    font-size: 20px;
+    color: #c50d00;
+}
+
+.searchText {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 30px;
+    width: 0px;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 1100px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 70px;
+        align-items: center;
+    }
+
+    .main-nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .nav-links {
+        margin-left: 20px;
+    }
+
+    .logo {
+        margin-top: 0;
+        font-size: 32px;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+
+    .logo:hover,
+    .nav-links:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .searchBox {
+        display: block;
+        position: absolute;
+        left:  40%;
+        top: 1.5%;
+        margin-top: 10px;
+        margin-bottom: auto;
+        background: #2f3640;
+        height: 40px;
+        max-height: 40px;
+        border-radius: 40px;
+        padding: 4px;
+    }
+    
+    .searchBox:hover > .searchText {
+        width: 20vw;
+        padding: 0 6px;
+    }
+    
+    .searchBox:hover > .searchButton {
+        background: white;
+        color: black;
+    }
+    
+    .searchButton {
+        color: #7c0800;
+        float: right;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #2f3640;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+        color: rgb(136, 136, 136);
+        cursor: pointer;
+    }
+    
+    .searchButton > i {
+        font-size: 20px;
+        color: #c50d00;
+    }
+    
+    .searchText {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: white;
+        font-size: 16px;
+        transition: 0.4s;
+        line-height: 40px;
+        width: 0px;
+        font-weight: bold;
+    }
+}
+
+.user {
+    position: fixed;
+    color: rgb(255, 255, 255);
+    top: 1.5%;
+    left: 200px;
+    margin-top: 5px;
+    z-index: 2;
+    background-color: rgba(211, 173, 255, 0);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 1100px) {
+    .user{
+        top: 1%;
+        font-size: 14px;
+        padding: 4px;
+        left: 150px;
+    }
+}
+
+.user li{
+    list-style: none;
+}
+
+section {
+    width: 100%;
+    position: relative;
+    height: 80vh;
+    margin-top: 72px;
+    background: url(movie_3.jpg);
+    background-position: top;
+    /* background-attachment: fixed; */
+    background-size: cover;
+}
+
+.welcomeText{
+    color: white;
+    position: absolute;
+    top: 26%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    margin-top: 10vh;
+    text-align: center;
+    font-family: helvetic;
+    background: rgba(0, 0, 0, 0.61);
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.welcomeText h1{
+    margin: 0;
+    font-size: 100px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    background: #00000000;
+    font-family: helvetic;
+    text-shadow: 2px 2px 0px #eb452b, 
+                4px 4px 0px #efa032, 
+                6px 6px 0px #46b59b;
+}
+
+.welcomeText li{
+    display: inline-block;
+    text-align: left;
+    list-style: none;
+    font-size: 50px;
+    margin: 25px;
+}
+
+@media screen and (max-width: 1260px) {
+    .welcomeText h1 {
+        font-size: 80px;
+    }
+
+    .welcomeText li {
+        font-size: 40px;
+        margin: 22px;
+    }
+}
+
+@media screen and (max-width: 1010px) {
+    .welcomeText h1 {
+        font-size: 60px;
+    }
+
+    .welcomeText li {
+        font-size: 30px;
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .welcomeText h1 {
+        font-size: 45px;
+    }
+
+    .welcomeText li {
+        font-size: 25px;
+        margin: 15px;
+    }
+}
+
+
+section .wave {
+    position: absolute;
+    width: 100%;
+    height: 101px;
+    bottom: 0;
+    left: 0;
+    background: url(wave.png);
+    animation: animate 5s linear infinite;
+}
+
+section .wave:before {
+    content: '';
+    width: 100%;
+    height: 101px;
+    background: url(wave.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+    animation-delay: -5s;
+    animation: animate 10s linear infinite;
+}
+
+section .wave:after {
+    content: '';
+    width: 100%;
+    height: 101px;
+    background: url(wave.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    animation: animate-reverse 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0;
+    }
+
+    100%{   
+        background-position: 958px;
+    }
+}
+
+@keyframes animate-reverse {
+    0% {
+        background-position: 958px;
+    }
+
+    100%{   
+        background-position: 0;
+    }
+}
+
+#mainBody {
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    min-height: 70vh;
+    border: 1px outset rgb(0, 0, 0);
+    box-shadow: 8px 8px 8px 3px #141414c4;
+    border-radius: 12px;
+}
+
+.grid{
+    background-color: rgb(0, 0, 0);
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    min-height: 70vh;
+    column-count: 3;
+    column-gap: 2em;
+    row-gap: 4em;
+    border: 1px solid rgb(59, 59, 59);
+    box-shadow: 8px 8px 8px 3px #000000c4;
+}
+
+.item a img{
+    width: 100%;
+}
+
+@media screen and (max-width: 1680px) {
+    .grid {
+        column-count: 2;
+        column-gap: 2em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .grid {
+        column-count: 1;
+        column-gap: 2em;
+    }
+}
+
+.loginBox {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content;
+}
+
+@media screen and (max-width: 580px) {
+    .loginBox a img{
+        width: 370px;
+    }
+}
+
+.rightForm{
+    position: relative;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    padding: 60px;
+    padding-top: 80px;
+    background: rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    box-decoration-break: 10px;
+}
+
+@media screen and (max-width: 400px) {
+    .rightForm{
+        width: 80%;
+        padding: 80px;
+        height: fit-content;
+    }
+}
+
+::placeholder{
+    color: #eee;
+}
+
+.rightForm h2{
+    margin: 20px;
+    font-size: 40px;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
+
+.rightForm .inputBox {
+    position: relative;
+    z-index:1;
+}
+
+.rightForm .inputBox input,.rightForm .inputBox select{
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 16px ;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    z-index: 2;
+}
+
+.rightForm .inputBox select option{
+    color: rgb(41, 41, 41);
+}
+
+.rightForm .inputBox select option:disabled{
+    background: rgb(199, 199, 199);
+    color: gray;
+}
+
+.rightForm .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: 1px;
+    padding: 10px 0px;
+    font-size: 16px ;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.rightForm .inputBox input:focus ~ label,
+.rightForm .inputBox input:valid ~ label{
+    top: -18px;
+    left: 0;
+    color: rgb(221, 0, 0);
+    font-size: 14px;
+    z-index: 1;
+}
+
+.rightForm input[type="submit"]{
+    position: relative;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #c50d00;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.rightForm form{
+    margin-top: 40px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.rightForm a{
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    z-index: 10;
+}
+
+#message {
+    position: relative;
+    margin-top: 10px;
+    z-index: 1;
+}
+
+#posterBox{
+    height: 70px;
+    margin-top: 70px;
+    background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 20%, #6b0000 74%);
+}
+
+#posterBox #posterInnerBox {
+    width: 75%;
+    height: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.topInfoLeft{
+    flex: 0%;
+    display: none;
+}
+
+.topInfoRight {
+    flex: 100%;
+    color: white;
+    text-align: center;
+}
+
+.topInfoRight h1 {
+    font-size: 26px;
+}
+
+#movieContainer{
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 75%;
+    box-shadow: 8px 8px 8px 3px #131313;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#movieContainer .movieInfoLeft{
+    flex: auto;
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.247);
+    align-content: center;
+    justify-content: center;
+    border-right: none;
+}
+
+#movieContainer .movieInfoRight{
+    flex: 75%;
+    background: #fff;
+    padding: 30px;
+}
+
+#selectHall{
+    margin: 0px;
+}
+
+.movieBanner{
+    width: 30vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movieBanner img{
+    width: inherit;
+    border: 1px solid ;
+}
+
+@media screen and (min-width: 1100px) {
+    #posterBox{
+        width: 100%;
+        height: 140px;
+        background-color: #000000;
+        background-image: linear-gradient(315deg, #000000 20%, #6b0000 74%);
+    }
+    
+    #posterBox #posterInnerBox {
+        width: 75%;
+        height: inherit;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+    
+    .topInfoLeft{
+        flex: 26%;
+        display: block;
+    }
+    
+    .topInfoRight {
+        flex: 74%;
+        text-align: left;
+        padding-top: 40px;
+        color: white;
+    }
+    
+    #movieContainer{
+        background-color: rgb(255, 255, 255);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0px;
+        width: 75%;
+        height: 75vh;
+        box-shadow: 8px 8px 8px 3px #1313139c;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    
+    #movieContainer .movieInfoLeft{
+        flex: 25%;
+        background: rgb(212, 212, 212);
+        align-content: center;
+        justify-content: center;
+        border-right: none;
+    }
+    
+    #movieContainer .movieInfoRight{
+        flex: 75%;
+    }
+    
+    .topInfoRight h1 {
+        font-size: 30px;
+    }
+
+    .movieBanner{
+        width: 15vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -90px;
+    }
+    
+    .movieBanner img{
+        padding: 0px;
+        width: inherit;
+        border: 1px solid ;
+    }
+}
+
+#selectHall {
+    background: coral;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 1em 2em;
+    color: #fff;
+    border: 0;
+    margin-top: 20px;
+}
+
+#selectHall:hover {
+    background: #333;
+}
+
+#hallForm {
+    width: fit-content;
+}
+
+.hallInfo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.movieSearchLabel:first-of-type {
+    margin-left: 10px;
+}
+
+#listOfHalls table{
+    border-collapse: collapse;
+    margin: 30px auto;
+    font-size: 0.9em;
+    min-width: 80%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#listOfHalls tr{
+    text-align: left;
+}
+
+#listOfHalls tr th{
+    background-color: #981200;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 15px;
+}
+
+.showData {
+    border-bottom: 1px solid #dddddd;
+}
+
+.showData:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.showData:last-of-type {
+    border-bottom: 2px solid #981200;
+}
+  
+#listOfHalls tr td {
+    padding: 12px 15px;
+}
+
+.hero-bkg-animated {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: gray url(1512217.jpg) repeat 0 0;
+    width: inherit;
+    margin: 0;
+    text-align: center;
+    height: inherit;
+    padding-top: 120px;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    box-sizing: border-box;
+    animation: slide 120s linear infinite;
+    z-index: -1;
+  }
+
+  
+@keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -5500px -3200px; }
+}
+
+
+.boxContainer {
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 50px;
+    margin-bottom: 90px;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #060c21;
+    position: relative;
+    width: fit-content;
+    max-width: 400px;
+    height: fit-content;
+    margin: 40px;
+    transition: transform .3s;
+}
+
+.box:hover {
+    transform: scale(1.1); 
+
+}
+
+.box:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    background: #fff;
+    z-index: -1;
+}
+
+.box:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    z-index: -2;
+    filter: blur(40px);
+}
+
+.box:nth-child(1):before,
+.box:nth-child(1):after{
+    background: linear-gradient(235deg,#89ff00,#010615,#00bcd4);
+}
+
+.box:nth-child(2):before,
+.box:nth-child(2):after{
+    background: linear-gradient(235deg,#ff005e,#010615,#fbff00);
+}
+
+.box:nth-child(3):before,
+.box:nth-child(3):after{
+    background: linear-gradient(235deg,#772aff,#010615,#2196F3);
+}
+
+.box .glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    display: block;
+    background: rgba(255, 255, 255, 0.226);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.box .contentInside {
+    color: white;
+}
+
+@font-face {
+    font-family: ticketFont;
+    src: url(IckyticketMono-nKpJ.ttf);
+  }
+
+@font-face {
+font-family: helvetic;
+src: url(Helvetica.ttf);
+}
+
+.d-wrapper {
+    background: linear-gradient(250deg, #382900 0%, #dac400 25%, #533d00 50%, #dac400 75%, #382900 100%);
+    width: 70%;
+    font-family: ticketFont;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.d-wrapper * {
+    margin:0;
+    padding:0;
+}
+    
+.d-wrapper div.sep {
+    min-height: 200px;
+    border-top: solid 32px #000000;
+    border-bottom: solid 32px #000000;
+    padding: 50px 30px;
+}
+
+.d-wrapper .img{
+    width: 100%;
+}
+    
+.d-wrapper .zig-zag-top:before{
+    background: linear-gradient(-45deg, #000000 16px, red 16px, blue 16px,  transparent 0), 
+                linear-gradient(45deg, #000000 16px, transparent 0);
+    background-position: left top;
+    background-repeat: repeat-x;
+    background-size: 12px 32px;
+    content: " ";
+    display: block;
+    height: 32px;
+    width: 100%;
+    position: relative;
+    bottom: 64px;
+    left:0;
+}
+
+.d-wrapper	.zig-zag-bottom{
+    margin-top: -64px;
+    background: #000000;
+}
+
+.d-wrapper	.zig-zag-top{
+    margin-bottom: -64px;
+    background: #000000;
+}
+    
+.d-wrapper	.zig-zag-bottom:after{
+    background: linear-gradient(-45deg, transparent 16px, #000000 0), 
+                linear-gradient(45deg, transparent 16px, #000000  0);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 12px 32px;
+    content: "";
+    display: block;
+
+    width: 100%;
+    height: 32px;
+    position: relative;
+    top:64px;
+    left:0px;
+}
+
+
+.movieTicket {
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 1500px) {
+    .movieTicket {
+        flex-direction: column;
+    }
+}
+
+.ticketMovieImage {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticketMovieImage img {
+    width: 220px;
+}
+
+@media screen and (max-width: 600px) {
+    .ticketMovieImage img {
+        width: 180px;
+    }
+}
+
+.ticketMovieDetails{
+    flex: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticketMovieName {
+    flex: 15%;
+    background-color: black;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.ticketMovieName h2 {
+    color: white;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    font-size: 180%;
+}
+
+.ticketMovieInfo{
+    flex: 85%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(218, 218, 218);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+@media screen and (max-width: 1150px) {
+    .ticketMovieInfo{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+.ticketMovieInfo .left{
+    flex: 50%;
+    border-right: 1px solid black;
+}
+
+@media screen and (max-width: 1150px) {
+    
+    .ticketMovieInfo .left{
+        border-right: none;
+        border-bottom: 2px solid black;
+    }
+}
+
+.left ul {
+    list-style-type: none;
+    width: fit-content;
+}
+
+.left ul li{
+    margin: 20px;
+    font-size: 120%;
+}
+
+.ticketMovieInfo .right{
+    flex: 50%;
+}
+
+.right ul {
+    list-style-type: none;
+    width: fit-content;
+}
+
+.right ul li{
+    margin: 20px;
+    font-size: 120%;
+}
+
+.bold {
+    font-weight: bold;
+}

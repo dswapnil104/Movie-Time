@@ -1,0 +1,21 @@
+{% extends 'movies/layout.html' %}
+
+{% load static %}
+
+{% block head %}
+    <script src="{% static 'movies/grid.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <h1 style="color: white; width: 70%; margin-top: 90px; margin-left: auto; margin-right: auto;">Movies</h1>
+
+    <div class="grid">
+        {% for movie in movies %}
+            <div class="item">
+                <a href = "{% url 'moviePage' movieName=movie %}"><img src="{{ movie.poster }}" ></a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

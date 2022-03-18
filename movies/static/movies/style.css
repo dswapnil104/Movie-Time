@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+.modal {
+  display: none;
+  background-color: #0000007a;
+  position: fixed;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  color: #fff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.modalContent{
+  background-color: #000000c7;
+  margin: 30% auto;
+  width: 70%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+  border-radius: 8px;
+  min-height: fit-content;
+  animation-name: modalopen;
+  animation-duration: 0.4s;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+@keyframes modalopen {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#modalInner {
+  flex: 70%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-right: 1px solid white;
+}
+
+.seatPrice {
+  flex: 30%;
+  list-style: none;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
+
+.seatPrice li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+}
+
+@media screen and (max-width: 970px) {
+  .modalContent {
+    flex-direction: column;
+  }
+
+  #modalInner {
+    border-right: none;
+  }
+
+  .seatPrice {
+    margin-left: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+.showcase {
+  width: fit-content;
+}
+
+.container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.seat {
+  background-color: #f83030;
+  height: 12px;
+  width: 15px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat.selected {
+  background-color: #fff;
+}
+
+.seat.occupied {
+  background-color: #444451;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  background-color: #fff;
+  height: 70px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
